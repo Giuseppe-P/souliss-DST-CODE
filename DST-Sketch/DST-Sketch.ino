@@ -468,7 +468,7 @@ void loop()
         Serial.println(String(timerPlus / 60) + String("m"));
         myNextion.setComponentText("t3", String ("+") + String(timerPlus / 60) + String("m"));
       } else {
-        myNextion.setComponentText("t3", String ("-") + String(timerMinus / 60) + String("m"));
+        myNextion.setComponentText("t3", String(timerMinus / 60) + String("m"));
         Serial.println(String ("-") + String(timerMinus / 60) + String("m"));
       }
     }
