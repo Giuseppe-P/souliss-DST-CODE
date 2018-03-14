@@ -1,0 +1,1 @@
+Copia tutte le cartelle in C:\Users\xxxxxxx\Documents\Arduino\libraries
