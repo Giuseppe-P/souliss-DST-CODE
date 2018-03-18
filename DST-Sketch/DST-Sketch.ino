@@ -198,36 +198,35 @@ void loop()
   EXECUTEFAST() {
     UPDATEFAST();
 
-     FAST_10ms() {
+    FAST_10ms() {
       Logic_DimmableLight(LEDPWM);
 
-      Serial.println((memory_map[MaCaco_OUT_s + LEDPWM + 1] + 45) / 3);
+      //Serial.println((memory_map[MaCaco_OUT_s + LEDPWM + 1] + 45) / 3);
+      Serial.println(memory_map[MaCaco_OUT_s + LEDPWM]);
 
       dimmer = ((memory_map[MaCaco_OUT_s + LEDPWM + 1] + 45) / 3);// 100
 
-       if ( dimmer != bloccadimmer) {
-        
-          if (dimmer < 17) {
-        myNextion.sendCommand("dims=100");
-      }       
-          else if ((dimmer > 17) && (dimmer < 35)) {
-            myNextion.sendCommand("dims=25");
-            Serial.println("25");
-          } else if
-          (( dimmer > 35) && (dimmer < 65)) {
-            myNextion.sendCommand("dims=50");
-            Serial.println("50");
-          } else if
-          (( dimmer > 65) && (dimmer < 85)) {
-            myNextion.sendCommand("dims=75");
-            Serial.println("75");
-          } else if
-          (dimmer > 85) {
-            myNextion.sendCommand("dims=100");
-            Serial.println("100");
-          }
-          bloccadimmer = dimmer;
-        
+
+      if ( dimmer != bloccadimmer) {
+        if (memory_map[MaCaco_OUT_s + LEDPWM] == 0) {
+          myNextion.sendCommand("dims=100");
+        } else if ((dimmer > 17) && (dimmer < 35)) {
+          myNextion.sendCommand("dims=25");
+          Serial.println("25");
+        } else if
+        (( dimmer > 35) && (dimmer < 65)) {
+          myNextion.sendCommand("dims=50");
+          Serial.println("50");
+        } else if
+        (( dimmer > 65) && (dimmer < 85)) {
+          myNextion.sendCommand("dims=75");
+          Serial.println("75");
+        } else if
+        (dimmer > 85) {
+          myNextion.sendCommand("dims=100");
+          Serial.println("100");
+        }
+        bloccadimmer = dimmer;
       }
     }
 
